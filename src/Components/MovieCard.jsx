@@ -16,11 +16,11 @@ export default function MovieCard(props) {
       <Card
         sx={{
           m: 3,
-          minWidth: 300,
-          maxWidth: 300,
+          minWidth: 200,
+          maxWidth: { md: 300, xs: "100%" },
           boxShadow: "0 0 14px",
           cursor: "pointer",
-          minHeight: 631,
+          minHeight: { sm: 631, xs: "auto" },
           "&:hover": {
             boxShadow: "0 0 95px",
             transform: `scale(${1.014})`,

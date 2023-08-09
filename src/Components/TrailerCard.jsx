@@ -5,7 +5,9 @@ import React from "react";
 
 export default function TrailerCard(props) {
   return (
-    <Card sx={{ height: 480, width: 720, backgroundColor: "#181414" }}>
+    <Card
+      sx={{ height: 480, width: 720, backgroundColor: "#181414", zIndex: 99 }}
+    >
       <CardContent
         sx={{
           display: "flex",

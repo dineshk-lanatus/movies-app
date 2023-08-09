@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { Box, Typography } from "@mui/material";
-import { EditNote, DeleteOutline } from "@mui/icons-material";
-import { DataGridPro, GridActionsCellItem } from "@mui/x-data-grid-pro";
-import { MoviesContext } from "../Context/MoviesContext";
-import { Link } from "react-router-dom";
+import React, { useContext } from 'react';
+import { Box, Typography } from '@mui/material';
+import { EditNote, DeleteOutline } from '@mui/icons-material';
+import { DataGridPro, GridActionsCellItem } from '@mui/x-data-grid-pro';
+import { MoviesContext } from '../Context/MoviesContext';
+import { Link } from 'react-router-dom';
 
 export default function MovieDataGrid() {
   const { searched, setSearched, setMovie } = useContext(MoviesContext);
@@ -17,37 +17,37 @@ export default function MovieDataGrid() {
   };
 
   const columns = [
-    { field: "title", headerName: "Movie Title", width: 482 },
+    { field: 'title', headerName: 'Movie Title', width: 482 },
     {
-      field: "rating",
-      headerName: "Rating",
-      type: "number",
+      field: 'rating',
+      headerName: 'Rating',
+      type: 'number',
       width: 140,
-      align: "left",
-      headerAlign: "left",
+      align: 'left',
+      headerAlign: 'left',
     },
     {
-      field: "date",
-      headerName: "Release Date",
+      field: 'date',
+      headerName: 'Release Date',
       width: 284,
     },
 
     {
-      field: "actions",
-      type: "actions",
-      headerName: "Actions",
+      field: 'actions',
+      type: 'actions',
+      headerName: 'Actions',
       width: 149,
-      cellClassName: "actions",
+      cellClassName: 'actions',
       getActions: ({ id }) => {
         return [
           <Link to={`/${id}/editing`}>
             <GridActionsCellItem
-              sx={{ "&:hover svg": { fill: "gold" } }}
+              sx={{ '&:hover svg': { fill: 'gold' } }}
               icon={
                 <EditNote
                   sx={{
-                    p: 0.6,
-                    fill: "black",
+                    p: 0.7,
+                    fill: 'black',
                   }}
                 />
               }
@@ -59,8 +59,8 @@ export default function MovieDataGrid() {
             />
           </Link>,
           <GridActionsCellItem
-            sx={{ "&:hover svg": { fill: "red" } }}
-            icon={<DeleteOutline sx={{ p: 1 }} />}
+            sx={{ '&:hover svg': { fill: 'red' } }}
+            icon={<DeleteOutline sx={{ p: 0.7 }} />}
             label="Delete"
             onClick={handleDeleteClick(id)}
           />,
@@ -73,14 +73,16 @@ export default function MovieDataGrid() {
     <Box
       sx={{
         p: 2,
-        backgroundColor: "white",
-        borderRadius: "14px",
-        width: "100%",
-        "& .actions": {
-          color: "text.secondary",
+        backgroundColor: 'white',
+        borderRadius: '14px',
+        display: 'flex',
+        flexDirection: 'column',
+
+        '& .actions': {
+          color: 'text.secondary',
         },
-        "& .textPrimary": {
-          color: "text.primary",
+        '& .textPrimary': {
+          color: 'text.primary',
         },
       }}
     >
@@ -93,10 +95,11 @@ export default function MovieDataGrid() {
       <DataGridPro
         sx={{
           mt: 2,
-          backgroundColor: "grey",
-          borderRadius: "14px",
+          backgroundColor: 'grey',
+          borderRadius: '14px',
           height: 464,
-          color: "white",
+          color: 'white',
+          overflow: 'auto',
         }}
         rows={Object.values(searched)}
         columns={columns}

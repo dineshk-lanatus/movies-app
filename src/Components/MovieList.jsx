@@ -12,7 +12,7 @@ export default function MovieList() {
     <Box>
       <Box>
         <Typography
-          variant="h3"
+          variant="h4"
           fontWeight={700}
           sx={{
             textAlign: "center",

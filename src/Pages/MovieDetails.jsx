@@ -46,6 +46,12 @@ export default function MovieDetails() {
         display: "flex",
         backgroundColor: "#181414",
         borderRadius: "1.4rem",
+        flexDirection: {
+          md: "row",
+          xs: "column",
+        },
+        alignItems: "center",
+        position: "relative",
       }}
     >
       <BackArrow
@@ -55,11 +61,13 @@ export default function MovieDetails() {
           fill: "#1565C0",
           p: "6px 5px",
           textAlign: "center",
-
           "&:hover": {
-            boxShadow: "10px 0 14px grey",
+            boxShadow: "0 0 14px grey",
             transform: `scale(1.09)`,
           },
+          position: "absolute",
+          left: 10,
+          top: 10,
         }}
         onClick={() => {
           navigate("/");
@@ -74,8 +82,9 @@ export default function MovieDetails() {
           height: 470,
           boxShadow: "none",
           background: "transparent",
-          mr: 6,
-          ml: 4,
+          mr: { md: 6, xs: 0 },
+          ml: { md: 4, xs: 0 },
+          mt: { sm: 0, xs: 4 },
         }}
       >
         <CardMedia
@@ -95,35 +104,36 @@ export default function MovieDetails() {
           }}
         />
 
-        <CardContent sx={{ mt: 4 }}>
-          <Button
-            onClick={handleOpen}
-            sx={{
-              "&:hover svg": {
-                fill: "#FF0000",
-              },
-            }}
-          >
-            Watch Trailer
-            <SmartDisplay sx={{ ml: 1 }} />
-          </Button>
-          <Backdrop
-            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={open}
-          >
-            {trailerContent}
-          </Backdrop>
+        <Button
+          onClick={handleOpen}
+          sx={{
+            mt: 4,
+            "&:hover svg": {
+              fill: "#FF0000",
+            },
+          }}
+        >
+          Watch Trailer
+          <SmartDisplay sx={{ ml: 1 }} />
+        </Button>
+
+        <CardContent sx={{ zIndex: 3 }}>
+          <Box sx={{ position: "absolute" }}>
+            <Backdrop sx={{ color: "#fff" }} open={open}>
+              {trailerContent}
+            </Backdrop>
+          </Box>
         </CardContent>
       </Card>
 
-      <Box sx={{ width: "70%", color: "#106cdc" }}>
+      <Box sx={{ width: { md: "70%", xs: "100%" }, color: "#106cdc" }}>
         <Box
           sx={{
             textShadow: "0 0 14px black",
             overflowWrap: "break-word",
           }}
         >
-          <Typography variant="h3" fontWeight="700" sx={{ mt: 1 }}>
+          <Typography variant="h4" fontWeight="700" sx={{ mt: 1 }}>
             {movie?.title}
           </Typography>
 
